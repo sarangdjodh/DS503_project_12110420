@@ -1,0 +1,52 @@
+* Getting the workspace ready 🟢
+> * import tensorflow ✅
+> * import tensorflow hub ✅
+> * make sure we are using a GPU ✅
+
+* Preprocessing images (turning images to tensors) 🟢
+to preprocess our images into tensors, we're going to write a function which does a few things:
+> * Take an image filepath as input.
+> * Use TensorFlow to read the file and save it into a variable, image.
+> * Turn our image (a jpg) into Tensors.
+> * Normalize the image (convert color channel values from 0-255 to 0-1)
+> * Resize the image to be the shape of (224, 224)
+> * Return the modified image.
+
+* Turning our data into batches 🟢
+why do we want to turn data into batches?
+Let's say if we are working with 10000+ images in one go....they all might not fit into memory.
+so that's why we do 32(batch size) images at a time. you can manually adjust the batch size if needed.
+In order to use TensorFlow effectively, we need our data in the form of tensor tuples which looks like this: (image, label)
+
+* Building a model 🟢
+before we build a model, there are a few things that we need to define:
+The input shape (our images shape, in form of Tensors) to our model.
+The output shape (image labels, in form of Tensors) to our model.
+The URL of model we want to use from tensorflow Hub.  link-https://tfhub.dev/google/imagenet/mobilenet_v2_130_224/classification/5
+
+* Creating callbacks 🟢
+Callbacks are the helper function that the model can use during training to do such things as save it's progress, check it's progress or stop training early if the model stops improving.
+We will create two callbacks, one for the Tensorboard which helps track our model progress and another for early stoping which prevents our model from training for too long.
+
+* Early stoping callback 🟢
+early stoping helps our model from overfitting by stopping training if a certain evaluation metric stops improving
+
+* Training a model (on subset of data) 🟢
+our first model is only going to train on 1000 images, to make sure everything is working.
+
+* Training the model on full dataset 🟢
+
+* Saving and reloading a trained model 🟢
+
+* Making predictions on any custom images 🟢
+To make prediction on custom images we will-
+> * Get the filepaths of our own images.
+> * Turn the filepaths into data batches using create_data_batches() and since our images won't be having labels we will set test_data parameter to True.
+> * Pass the custom image data batch to our models predict() method.
+> * Convert the prediction probabilities to prediction labels.
+> * Compare the predicted labels to the custom images.
+
+
+
+
+
